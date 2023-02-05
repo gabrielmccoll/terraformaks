@@ -11,6 +11,11 @@ resource "azurerm_kubernetes_cluster" "example" {
   automatic_channel_upgrade         = "patch"
   role_based_access_control_enabled = true
   sku_tier                          = "Free"
+  api_server_access_profile {
+    authorized_ip_ranges =    ["92.21.159.6/32"]
+  }
+
+
 
 
   network_profile {
@@ -19,15 +24,18 @@ resource "azurerm_kubernetes_cluster" "example" {
     dns_service_ip     = "10.1.0.10"
     docker_bridge_cidr = "172.17.0.1/16"
     network_mode       = "transparent"
+    
   }
 
   default_node_pool {
-    name                = "default"
+    name = "default"
+
     vm_size             = "Standard_B2s"
     enable_auto_scaling = true
     max_count           = 3
     min_count           = 1
     vnet_subnet_id      = azurerm_subnet.akspool.id
+    zones               = ["1", "2", "3"]
   }
 
   identity {
@@ -37,15 +45,10 @@ resource "azurerm_kubernetes_cluster" "example" {
   tags = {
     Environment = "Dev"
   }
+
+  oms_agent {
+    log_analytics_workspace_id = azurerm_log_analytics_workspace.aks.id
+  }
+
 }
 
-output "client_certificate" {
-  value     = azurerm_kubernetes_cluster.example.kube_config.0.client_certificate
-  sensitive = true
-}
-
-output "kube_config" {
-  value = azurerm_kubernetes_cluster.example.kube_config_raw
-
-  sensitive = true
-}

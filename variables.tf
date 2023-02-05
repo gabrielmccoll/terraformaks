@@ -7,7 +7,7 @@ variable "clustername" {
 }
 
 variable "SelfDestructinHours" {
-  type = string
+  type    = string
   default = 1
 }
 
