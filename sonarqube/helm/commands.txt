@@ -1,6 +1,6 @@
 #https://dev.to/lakkimartin/install-sonarqube-on-kubernetes-aks-49o7
-kubectl taint nodes aks-default-91808247-vmss000001  sonarqube=true:NoSchedule
-kubectl label node aks-default-91808247-vmss000001 sonarqube=true
+kubectl taint nodes aks-default-39173357-vmss000000   sonarqube=true:NoSchedule
+kubectl label nodes aks-default-39173357-vmss000000 sonarqube=true
 
 helm repo add sonarqube https://SonarSource.github.io/helm-chart-sonarqube
 helm repo update

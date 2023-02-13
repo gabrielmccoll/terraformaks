@@ -33,7 +33,7 @@ resource "azurerm_kubernetes_cluster" "example" {
     vm_size             = "Standard_B2ms"
     enable_auto_scaling = true
     max_count           = 3
-    min_count           = 1
+    min_count           = 2
     vnet_subnet_id      = azurerm_subnet.akspool.id
     zones               = ["1", "2", "3"]
   }
