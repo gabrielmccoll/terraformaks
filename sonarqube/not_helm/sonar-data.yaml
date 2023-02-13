@@ -1,0 +1,12 @@
+# cat sonar-data.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sonar-data
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: default
+  resources:
+    requests:
+      storage: 30Gi

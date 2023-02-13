@@ -12,7 +12,7 @@ resource "azurerm_kubernetes_cluster" "example" {
   role_based_access_control_enabled = true
   sku_tier                          = "Free"
   api_server_access_profile {
-    authorized_ip_ranges =    ["92.21.159.6/32"]
+    authorized_ip_ranges =    ["88.104.51.10/32"]
   }
 
 
@@ -30,7 +30,7 @@ resource "azurerm_kubernetes_cluster" "example" {
   default_node_pool {
     name = "default"
 
-    vm_size             = "Standard_B2s"
+    vm_size             = "Standard_B2ms"
     enable_auto_scaling = true
     max_count           = 3
     min_count           = 1

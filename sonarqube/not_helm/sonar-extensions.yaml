@@ -1,0 +1,12 @@
+# cat sonar-extensions.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sonar-extensions
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: default
+  resources:
+    requests:
+      storage: 30Gi
