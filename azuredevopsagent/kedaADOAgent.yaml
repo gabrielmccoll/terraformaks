@@ -8,7 +8,7 @@ spec:
       spec:
         containers:
         - name: azdevops-agent-job
-          image: gabrielmccoll/basic_ado_agent_keda
+          image: gabrielmccoll/azure_devops_container_agent_dotnet_sdk
           imagePullPolicy: Always
           env:
           - name: AZP_URL
